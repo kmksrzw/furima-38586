@@ -8,6 +8,7 @@ RSpec.describe User, type: :model do
   describe 'ユーザー新規登録' do
     context '新規登録できる場合' do
       it "全項目が存在すれば登録できる" do
+
         expect(@user).to be_valid
       end
     end
@@ -56,6 +57,37 @@ RSpec.describe User, type: :model do
         @user.email = 'testmail'
         @user.valid?
         expect(@user.errors.full_messages).to include('Email is invalid')
+      end
+      it 'お名前(全角)は、名字と名前が空では登録できない' do
+        @user.first_name = ""
+        @user.last_name = ""
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name can't be blank") 
+      end
+      it 'お名前(全角)は、名前を全角（漢字・ひらがな・カタカナ）でないと登録できない' do
+        @user.first_name = "xx"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name is invalid") 
+      end
+      it 'お名前(全角)は、名字を全角（漢字・ひらがな・カタカナ）でないと登録できない' do
+        @user.last_name = "xx"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name is invalid") 
+      end
+      it 'お名前カナ(全角)は、名前を全角（カタカナ）でないと登録できない' do
+        @user.first_name_kana = "ﾀﾛｳ"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana is invalid") 
+      end
+      it 'お名前カナ(全角)は、名字を全角（カタカナ）でないと登録できない' do
+        @user.last_name_kana = "やまだ"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name kana is invalid") 
+      end
+      it "生年月日が空では登録できない" do
+        @user.birthday = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include "Birthday can't be blank"
       end
     end
   end
