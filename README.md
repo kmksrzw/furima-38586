@@ -22,11 +22,11 @@ has_many :purchases
 | guid	              | string	   | null: false	                  | 商品説明
 | status_id	          | integer    | null: false	                  | 状態 #ActiveHash
 | costs_allocation_id | integer    | null: false	                  | 配送料負担 #ActiveHash
-| days_id	            | integer    | null: false	                  | 発送日数 #ActiveHash
+| delivery_day_id     | integer    | null: false	                  | 発送日数 #ActiveHash
 | price	              | integer	   | null: false	                  | 金額
-| user_id	            | references | null: false, foreign_key: true | 出品者（ユーザー）
+| user  	            | references | null: false, foreign_key: true | 出品者（ユーザー）
 | category_id	        | integer    | null: false                    | カテゴリ #ActiveHash
-| prefectures_id	    | integer    | null: false                    | 発送元地域 #ActiveHash
+| prefecture_id	     | integer    | null: false                    | 発送元地域 #ActiveHash
 
 ### Assosiation
 has_one_attached :image	## chatapp画像投稿機能を参照
@@ -49,8 +49,8 @@ belongs_to :user
 ## addressesテーブル(配送先)
 | Column  	     | Type	      | Options	                       |	
 | -------------- | ---------- | ------------------------------ |
-| post_id	       | string 	  | null: false	                   | 郵便番号
-| prefectures_id | integer    | null: false                    | 都道府県 #Activehash
+| post_code      | string 	  | null: false	                   | 郵便番号
+| prefecture_id  | integer    | null: false                    | 都道府県 #Activehash
 | city	         | string	    | null: false	                   | 市区町村
 | number	       | string	    | null: false	                   | 番地
 | building	     | string	    |		                             | 建物(任意)
