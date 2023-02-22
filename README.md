@@ -19,7 +19,7 @@ has_many :purchases
 | Column	            | Type       | Options                        |	
 | ------------------- | ---------- | ------------------------------ |	
 | item_name	          | string     | null: false	                  | 商品名
-| guid	              | string	   | null: false	                  | 商品説明
+| guid	              | text  	   | null: false	                  | 商品説明
 | status_id	          | integer    | null: false	                  | 状態 #ActiveHash
 | costs_allocation_id | integer    | null: false	                  | 配送料負担 #ActiveHash
 | delivery_day_id     | integer    | null: false	                  | 発送日数 #ActiveHash
@@ -31,7 +31,7 @@ has_many :purchases
 ### Assosiation
 has_one_attached :image	## chatapp画像投稿機能を参照
 has_one	    :purchase
-belings_to	:user
+belongs_to	:user
 
 
 ## purchasesテーブル(購入情報)
@@ -52,10 +52,10 @@ belongs_to :user
 | post_code      | string 	  | null: false	                   | 郵便番号
 | prefecture_id  | integer    | null: false                    | 都道府県 #Activehash
 | city	         | string	    | null: false	                   | 市区町村
-| number	       | string	    | null: false	                   | 番地
+| addressnumber  | string	    | null: false	                   | 番地
 | building	     | string	    |		                             | 建物(任意)
 | tel	           | string     | null: false	                   | 電話番号
 | purchase	     | references | null: false, foreign_key: true | 購入情報ID
 
 ### Assosiation
-bolongs_to :purchase
+belongs_to :purchase
