@@ -29,8 +29,7 @@ has_many :purchases
 | prefecture_id	     | integer    | null: false                    | 発送元地域 #ActiveHash
 
 ### Assosiation
-has_one_attached :image	## chatapp画像投稿機能を参照
-has_one	    :purchase
+has_one     :purchase
 belongs_to	:user
 
 
@@ -52,7 +51,7 @@ belongs_to :user
 | post_code      | string 	  | null: false	                   | 郵便番号
 | prefecture_id  | integer    | null: false                    | 都道府県 #Activehash
 | city	         | string	    | null: false	                   | 市区町村
-| addressnumber  | string	    | null: false	                   | 番地
+| address_number | string	    | null: false	                   | 番地
 | building	     | string	    |		                             | 建物(任意)
 | tel	           | string     | null: false	                   | 電話番号
 | purchase	     | references | null: false, foreign_key: true | 購入情報ID
