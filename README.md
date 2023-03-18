@@ -26,7 +26,7 @@ has_many :purchases
 | price	              | integer	   | null: false	                  | 金額
 | user  	            | references | null: false, foreign_key: true | 出品者（ユーザー）
 | category_id	        | integer    | null: false                    | カテゴリ #ActiveHash
-| prefecture_id	     | integer    | null: false                    | 発送元地域 #ActiveHash
+| prefecture_id	      | integer    | null: false                    | 発送元地域 #ActiveHash
 
 ### Assosiation
 has_one     :purchase
