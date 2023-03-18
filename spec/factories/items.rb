@@ -9,7 +9,6 @@ FactoryBot.define do
     category_id {2}
     prefecture_id {21}
 
-    # association :user, :categorie, :cost_allocation, :delivery, :prefecture, :statuses
     association :user
 
     after(:build) do |item|
