@@ -27,7 +27,6 @@ has_many :orders
 | user  	            | references | null: false, foreign_key: true | 出品者（ユーザー）
 | category_id	        | integer    | null: false                    | カテゴリ #ActiveHash
 | prefecture_id	      | integer    | null: false                    | 発送元地域 #ActiveHash
-| sale	              | integer    | null: false                    | 売却済フラグ（商品購入実装時に追加）
 
 ### Assosiation
 has_one     :order
